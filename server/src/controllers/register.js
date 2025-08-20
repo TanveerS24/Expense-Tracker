@@ -4,13 +4,16 @@ import User from "../models/user.js";
 
 const Register = async (req, res) => {
     try {
+        console.log("Registering new user:", req.body.email);
         const { username, email, password } = req.body;
 
         if (!username || !email || !password) {
+            console.error("Missing username, email, or password");
             return res.status(400).json({ message: "All fields are required" });
         }
 
         if (await User.findOne({ email })) {
+            console.error("Email already exists");
             return res.status(400).json({ message: "Email already exists" });
         }
 

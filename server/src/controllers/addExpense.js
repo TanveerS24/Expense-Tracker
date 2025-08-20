@@ -2,6 +2,7 @@ import Expense from "../models/expense.js";
 
 const addExpense = async (req, res) => {
   try {
+    console.log("Adding expense for user:", req.params.userId);
     const { description, amount, category, transactionType, date } = req.body;
 
     const newExpense = new Expense({

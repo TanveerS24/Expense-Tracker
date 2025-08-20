@@ -9,6 +9,7 @@ const deleteUser = async (req, res) => {
   try {
     const existingUser = await User.findById(userId);
     if (!existingUser) {
+      console.error("User not found for deletion");
       return res.status(404).json({ message: "User not found" });
     }
     await User.findByIdAndDelete(userId);

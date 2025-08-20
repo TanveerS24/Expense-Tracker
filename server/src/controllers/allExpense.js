@@ -2,6 +2,7 @@ import Expense from "../models/expense.js";
 
 const getAllExpenses = async (req, res) => {
   try {
+    console.log("Fetching all expenses for user:", req.params.userId);
     const userId = req.params.userId;
     const expenses = await Expense.find({ userId });
     res.status(200).json(expenses);
