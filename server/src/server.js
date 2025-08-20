@@ -6,9 +6,11 @@ dotenv.config();
 import connectDB from "./config/db.js";
 import expenseRouter from "./routes/expenseRoutes.js";
 import userRouter from "./routes/userRoutes.js";
+import rateLimitMiddleware from "./middlewares/ratelimiter.js";
 
 const app = express();
 app.use(express.json());
+app.use(rateLimitMiddleware);
 
 const port = process.env.PORT || 5000;
 
