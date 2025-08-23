@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ import rateLimitMiddleware from "./middlewares/ratelimiter.js";
 const app = express();
 app.use(express.json());
 app.use(rateLimitMiddleware);
+app.use(cors());
 
 const port = process.env.PORT || 5000;
 
