@@ -1,12 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router'
 import api from '../lib/axios'
 import * as yup from 'yup'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 
 import VerifyEmail  from '../helpers/VerifyEmail'
+import VerifyOTP from '../helpers/VerifyOTP'
+
+import EmailVerified from '../ToasterHelpers/EmailVerified'
 
 const Register = () => {
-  const registerStatus = true
+
+  const navigate = useNavigate();
+
+  const [registerStatus, setRegisterStatus] = useState(false);
+  const [showOTP, setShowOTP] = useState(false);
+  const [showVerifyEmail, setShowVerifyEmail] = useState(true);
 
   const validateInput = yup.object().shape({
     username: yup.string().required('Username is required').min(4, 'Username must be at least 4 characters').max(16, 'Username must be at most 16 characters'),
@@ -20,9 +29,10 @@ const Register = () => {
       console.log('Registration successful:', response.data)
 
       if (response.status === 201) {
-        alert('Registration successful! You can now log in.');
         console.log('User ID:', response.data.user.id);
         sessionStorage.setItem('user', JSON.stringify(response.data.user._id));
+        localStorage.removeItem('status');
+        navigate('/home');
       }
     } catch (error) {
       console.error('Registration failed:', error);
@@ -38,9 +48,13 @@ const Register = () => {
         <Formik
           validationSchema={validateInput}
           onSubmit={onSubmit}
+          initialValues={{
+            username: '',
+            email: '',
+            password: ''
+          }}
         >
           <Form className="space-y-5">
-            {/* Username */}
             <div className="flex flex-col">
               <label htmlFor="username" className="text-gray-300 mb-1">Username</label>
               <Field 
@@ -53,7 +67,6 @@ const Register = () => {
               <ErrorMessage name="username" component="div" className="text-red-400 text-sm mt-1" />
             </div>
 
-            {/* Email */}
             <div className="flex flex-col">
               <label htmlFor="email" className="text-gray-300 mb-1">Email</label>
               <Field 
@@ -66,7 +79,6 @@ const Register = () => {
               <ErrorMessage name="email" component="div" className="text-red-400 text-sm mt-1" />
             </div>
 
-            {/* Password */}
             <div className="flex flex-col">
               <label htmlFor="password" className="text-gray-300 mb-1">Password</label>
               <Field 
@@ -78,12 +90,27 @@ const Register = () => {
               />
               <ErrorMessage name="password" component="div" className="text-red-400 text-sm mt-1" />
             </div>
-            <VerifyEmail/>
-            {/* Submit Button */}
+            {showVerifyEmail && (
+              <VerifyEmail onEmailVerified={() => {
+                setShowOTP(true);
+                setShowVerifyEmail(false);
+              }} />
+            )}
+            {showOTP && (
+              <VerifyOTP
+                onOTPSubmit={(otpValue) => {
+                  console.log('OTP Entered:', otpValue);
+                }}
+                onVerified={() => {
+                  setRegisterStatus(true);  // <-- enable register button
+                  EmailVerified();
+                }}
+              />
+            )}
+
             <button 
               type="submit"
-              className="btn btn-primary btn-ghost   text-blue-500 
-              disabled:bg-gray-600 disabled:text-gray-900" disabled={!registerStatus}
+              className="btn btn-primary btn-ghost   text-blue-500 disabled:bg-gray-600 disabled:text-gray-900" disabled={!registerStatus}
             >
               Register
             </button>

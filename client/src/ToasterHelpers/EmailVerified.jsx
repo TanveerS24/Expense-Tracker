@@ -1,10 +1,9 @@
 import { toast } from "react-hot-toast";
 const UnderDevelopment = () => {
-    toast.error(
+    toast.success(
       <span className="bg-[#36454F] text-[#F0F0F0] font-sans 
       text-base border border-[#B6AFA9] rounded-lg px-5 py-3">
-        This feature is under development.<br />
-        Please check back later.
+        Email has been successfully verified! You can now register your account.
       </span>,
     );
 };

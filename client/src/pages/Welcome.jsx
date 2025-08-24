@@ -1,5 +1,4 @@
 import React from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 import UnderDevelopment from '../ToasterHelpers/UnderDevelopment';
@@ -7,7 +6,6 @@ import UnderDevelopment from '../ToasterHelpers/UnderDevelopment';
 const Welcome = () => {
   const navigate = useNavigate();
 
-  // Navigation functions
   const gotoLogin = () => navigate('/login');
   const gotoRegister = () => navigate('/register');
 

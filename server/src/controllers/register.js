@@ -12,10 +12,10 @@ const Register = async (req, res) => {
             return res.status(400).json({ message: "All fields are required" });
         }
 
-        // if (await User.findOne({ email })) {
-        //     console.error("Email already exists");
-        //     return res.status(400).json({ message: "Email already exists" });
-        // }
+        if (await User.findOne({ email })) {
+            console.error("Email already exists");
+            return res.status(400).json({ message: "Email already exists" });
+        }
 
         const hashedPassword = await argon2.hash(password);
         const newUser = new User({ username, email, password: hashedPassword });
