@@ -5,7 +5,7 @@ const UnderDevelopment = () => {
       text-base border border-[#B6AFA9] rounded-lg px-5 py-3">
         This feature is under development.<br />
         Please check back later.
-      </span>,
+      </span>
     );
 };
 
