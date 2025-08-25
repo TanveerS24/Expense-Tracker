@@ -27,6 +27,8 @@ const VerifyEmail = ({ onEmailVerified }) => {
                 );
 
                 if (onEmailVerified) onEmailVerified();
+            } else if (res.status === 409) {
+                toast.error("Email already exists.");
             }
         } catch (error) {
             console.error("Error verifying email:", error);

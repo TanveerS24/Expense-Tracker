@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import transporter from "../config/email.js";
 import EmailVerification from "../models/emailVerification.js";
+import User from "../models/user.js";
 
 const random_number= () => {
     const ran_int = crypto.randomInt(100000, 1000000);
@@ -9,6 +10,16 @@ const random_number= () => {
 
 const send_verification_email = async (req, res) => {
     const { email } = req.body;
+
+    try {
+        const existingUser = await User.findOne({email});
+        if(existingUser){
+            console.log("Email already exists");
+            res.status(409).json({ message: "Email already exists" })
+        }
+    } catch (error) {
+        console.error("Error saving email verification:", error);
+    }
     const verificationCode = random_number();
     try {
         const emailVerification = new EmailVerification({ email, verificationCode });
@@ -20,6 +31,7 @@ const send_verification_email = async (req, res) => {
     
 
     try {
+        const otp = random_number();
         const info = await transporter.sendMail({
             from: `"Expense Tracker" <${process.env.MAIL_USERNAME}>`, // sender address
             to: email,                // list of receivers

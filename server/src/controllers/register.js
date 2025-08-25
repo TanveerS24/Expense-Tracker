@@ -14,7 +14,7 @@ const Register = async (req, res) => {
 
         if (await User.findOne({ email })) {
             console.error("Email already exists");
-            return res.status(400).json({ message: "Email already exists" });
+            return res.status(409).json({ message: "Email already exists" });
         }
 
         const hashedPassword = await argon2.hash(password);
