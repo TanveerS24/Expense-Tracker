@@ -8,6 +8,8 @@ import api from '../lib/axios';
 
 import ClickSpark from '../react-bits/ClickSpark'
 
+import ClickAround from '../ToasterHelpers/ClickAround';
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -57,6 +59,7 @@ const Login = () => {
 
   return (
     <>
+      <ClickAround />
       <div className='fixed inset-0 z-10'>
       <ClickSpark
         sparkColor='#fff'

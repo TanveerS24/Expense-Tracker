@@ -9,6 +9,7 @@ import VerifyEmail  from '../helpers/VerifyEmail'
 import VerifyOTP from '../helpers/VerifyOTP'
 
 import EmailVerified from '../ToasterHelpers/EmailVerified'
+import ClickAround from '../ToasterHelpers/ClickAround'
 
 import ClickSpark from '../react-bits/ClickSpark'
 import toast from 'react-hot-toast'
@@ -61,6 +62,7 @@ const Register = () => {
 
   return (
     <>
+    <ClickAround/>
     <div className='fixed inset-0 z-10'>
       <ClickSpark
         sparkColor='#fff'
