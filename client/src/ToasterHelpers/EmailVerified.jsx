@@ -5,6 +5,11 @@ const UnderDevelopment = () => {
       text-base border border-[#B6AFA9] rounded-lg px-5 py-3">
         Email has been successfully verified! You can now register your account.
       </span>,
+      {
+        position: "bottom-left",
+        duration:3000,
+        style: { boxShadow: "0 2px 8px rgba(0,0,0,0.2)" },
+      }
     );
 };
 

@@ -1,11 +1,12 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Welcome from './pages/Welcome'; 
-import Home from './pages/Home'; // Make sure this exists
-import Login from './pages/Login'; // Make sure this exists
-import Register from './pages/Register'; // Make sure this exists
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register'; 
 
 const App = () => {
-  const loggedin = sessionStorage.getItem('user') === null 
+  const loggedin = sessionStorage.getItem('user') === null;
+
   return (
     <div>
       <Routes>

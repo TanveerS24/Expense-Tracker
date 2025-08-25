@@ -31,8 +31,12 @@ const VerifyEmail = ({ onEmailVerified }) => {
                 toast.error("Email already exists.");
             }
         } catch (error) {
-            console.error("Error verifying email:", error);
-            toast.error("Failed to send verification email. Please try again.");
+          console.error("Error verifying email:", error);
+          if (error.response && error.response.status === 409) {
+            toast.error("Email already exists.");
+          } else {
+              toast.error("Failed to send verification email. Please try again.");
+          }
         }
     };
 
