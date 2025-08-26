@@ -85,7 +85,7 @@ const Login = () => {
                   type="email" 
                   id="email" 
                   name="email"
-                  className="input input-text w-auto"
+                  className="input input-text w-auto cursor-target"
                   placeholder="Enter your email"
                 />
                 <ErrorMessage name="email" component="div" className="text-red-400 text-sm mt-1" />
@@ -96,21 +96,21 @@ const Login = () => {
                   type="password" 
                   id="password" 
                   name="password"
-                  className="input input-text w-auto"
+                  className="input input-text w-auto cursor-target"
                   placeholder="Enter your password"
                 />
                 <ErrorMessage name="password" component="div" className="text-red-400 text-sm mt-1" />
               </div>
               <button 
                 type="submit"
-                className="btn btn-outline btn-info hover:text-slate-800 w-full align-middle text-blue-500" 
+                className="btn btn-outline btn-info hover:text-slate-800 w-full cursor-target align-middle text-blue-500" 
               >
                 Login
               </button>
             </Form>
           </Formik>
         </div>
-        <Link to="/register" className="text-blue-500 hover:underline mt-4 relative z-20">Don't have an account? Register</Link>
+        <Link to="/register" className="text-blue-500 hover:underline cursor-target mt-4 relative z-20">Don't have an account? Register</Link>
       </div>
     </>
   )

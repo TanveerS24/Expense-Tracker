@@ -93,7 +93,7 @@ const Register = () => {
                   type="text" 
                   id="username" 
                   name="username"
-                  className="input input-text w-auto"
+                  className="input input-text w-auto cursor-target"
                   placeholder="Enter your username"
                 />
                 <ErrorMessage name="username" component="div" className="text-red-400 text-sm mt-1" />
@@ -105,7 +105,7 @@ const Register = () => {
                   type="email" 
                   id="email" 
                   name="email"
-                  className="input input-text w-auto"
+                  className="input input-text w-auto cursor-target"
                   placeholder="Enter your email"
                 />
                 <ErrorMessage name="email" component="div" className="text-red-400 text-sm mt-1" />
@@ -117,7 +117,7 @@ const Register = () => {
                   type="password" 
                   id="password" 
                   name="password"
-                  className="input input-text w-auto"
+                  className="input input-text w-auto cursor-target"
                   placeholder="Enter your password"
                 />
                 <ErrorMessage name="password" component="div" className="text-red-400 text-sm mt-1" />
@@ -142,14 +142,14 @@ const Register = () => {
 
               <button 
                 type="submit"
-                className="btn btn-outline btn-info w-full align-middle text-blue-500 hover:text-slate-800 disabled:bg-gray-600 disabled:text-gray-900" disabled={!registerStatus}
+                className="btn btn-outline btn-info w-full align-middle text-blue-500 cursor-target hover:text-slate-800 disabled:bg-gray-600 disabled:text-gray-900" disabled={!registerStatus}
               >
                 Register
               </button>
             </Form>
           </Formik>
         </div>
-        <Link to="/login" className="text-blue-500 mt-4 hover:underline relative z-20">Already have an account? Login</Link>
+        <Link to="/login" className="text-blue-500 mt-4 hover:underline relative z-20 cursor-target">Already have an account? Login</Link>
     </div>
     </>
   )

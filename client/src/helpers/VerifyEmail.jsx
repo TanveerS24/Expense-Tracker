@@ -41,12 +41,14 @@ const VerifyEmail = ({ onEmailVerified }) => {
     };
 
     return (
+      <div className="flex items-center justify-center mt-2">
         <Link
-          className="text-blue-500 underline w-auto h-auto flex flex-col items-center justify-center"
+          className="text-blue-500 underline w-fit h-fit cursor-target"
           onClick={Verify}
         >
             Verify Email
         </Link>
+      </div>
     );
 };
 

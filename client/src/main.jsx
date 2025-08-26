@@ -5,11 +5,14 @@ import './index.css'
 import { Toaster } from 'react-hot-toast'
 import App from './App.jsx'
 
+import TargetCursor from './react-bits/TargetCursor';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <App />
       <Toaster />
+      <TargetCursor />
     </BrowserRouter>
   </StrictMode>,
 )

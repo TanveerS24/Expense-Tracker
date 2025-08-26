@@ -5,7 +5,9 @@ import UnderDevelopment from '../ToasterHelpers/UnderDevelopment';
 
 import LightRays from '../react-bits/LightRays';
 import SplitText from '../react-bits/SplitText';
-import TargetCursor from '../react-bits/TargetCursor';
+
+
+import About from '../components/About';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -27,11 +29,8 @@ const Welcome = () => {
 
   return (
     <>
+    <About/>
       <div className="flex">
-        <TargetCursor 
-                  spinDuration={2}
-                  hideDefaultCursor={true}
-                />
         <div className="relative w-full h-screen">
           <LightRays
             raysOrigin="top-center"
