@@ -1,8 +1,8 @@
-import GoogleStratergy from "passport-google-oauth20";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import passport from "passport";
 
-passport.use(new GoogleStratergy({
-    clientID: process.env.CLIENT_ID,
+passport.use(new GoogleStrategy({
+    clientID: "895617163482-01gtrrh4j93mjl0akslfcnbdruu0ru1n.apps.googleusercontent.com",
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "/api/users/auth/google/callback",
     scope: ["profile", "email"]
