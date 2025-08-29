@@ -3,6 +3,7 @@ import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register'; 
+import UserDetails from "./pages/UserDetails";
 import PageNotFound from './pages/PageNotFound';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/userdetails' element={<UserDetails />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </div>

@@ -9,8 +9,8 @@ const VerifyEmail = ({ onEmailVerified }) => {
     const Verify = async () => {
         try {
             console.log("Verifying email:", values.email);
-            const res = await api.post("/users/sendverificationemail", { email: values.email });
-            
+            const res = await api.post(`${import.meta.env.VITE_BASE_URL}/users/sendverificationemail`, { email: values.email });
+
             if (res.status === 200) {
                 localStorage.setItem("status", "sent");
 

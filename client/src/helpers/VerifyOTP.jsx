@@ -28,7 +28,7 @@ const OTPInput = ({ onOTPSubmit, onVerified }) => {
 
   const verify = async (otpValue) => {
     try {
-      const response = await api.post("/users/verifyOTP", { otp: otpValue, email: values.email });
+      const response = await api.post(`${import.meta.env.VITE_BASE_URL}/users/verifyOTP`, { otp: otpValue, email: values.email });
       if(response.status === 200){
         console.log("OTP verified successfully");
         if(onVerified) onVerified();

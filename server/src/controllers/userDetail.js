@@ -1,6 +1,7 @@
 import user from "../models/user.js"
 
 const userDetails = (async (req,res) =>{
+    console.log("reached the user details end point");
     const userId = req.query.id;
     console.log("finding about the user:", userId);
     try {
