@@ -29,7 +29,7 @@ const Login = () => {
 
       if(response.status === 200) {
         console.log('Login successful:', response.data);
-        sessionStorage.setItem('user', JSON.stringify(response.data.user._id));
+        sessionStorage.setItem('user', response.data.user._id);
         toast.success(
           <span className="bg-[#36454F] text-[#F0F0F0] font-sans 
           text-base border border-[#B6AFA9] rounded-lg px-5 py-3">

@@ -22,9 +22,15 @@ const UserDetails = () => {
     userDetails();
   }, []);
 
+  if (!user) return <div>Loading...</div>
+
   return (
     <div>
       <h1>User Details</h1>
+      <div key={user.id}>
+        <h2>Username: {user.username}</h2>
+        <p>Email: {user.email}</p>
+      </div>
     </div>
   )
 }
