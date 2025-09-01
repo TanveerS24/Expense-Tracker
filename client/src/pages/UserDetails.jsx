@@ -6,7 +6,7 @@ const UserDetails = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userId = JSON.parse(sessionStorage.getItem('user'));
+    const userId = sessionStorage.getItem('user');
     console.log("fetching details of ", userId);
     const userDetails = async () => {
       try {

@@ -35,7 +35,7 @@ const Register = () => {
       if (response.status === 201) {
         console.log('Registration successful:', response.data)
         console.log('User ID:', response.data.user.id);
-        sessionStorage.setItem('user', JSON.stringify(response.data.user._id));
+        sessionStorage.setItem('user', response.data.user._id);
         localStorage.removeItem('status');
         toast.success(
           <span className="bg-[#36454F] text-[#F0F0F0] font-sans 
