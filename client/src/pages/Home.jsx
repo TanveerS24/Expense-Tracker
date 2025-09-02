@@ -4,6 +4,8 @@ import LoginSuccessful from '../ToasterHelpers/LoginSuccesful'
 
 import api from '../lib/axios';
 
+import RecordCard from '../components/RecordCard';
+
 const Home = () => {
   const [trackRecord, setTrackRecord] = useState([]);
   
@@ -28,13 +30,7 @@ const Home = () => {
         
         <div className='mt-20 p-4 space-y-4'>
           {trackRecord.map((record) => (
-            <div key={record.id}>
-              <h2>{record.title}</h2>
-              <p>Amount: {record.amount}</p>
-              <p>Category: {record.category}</p>
-              <p>Description: {record.description}</p>
-              <p>Date: {record.date}</p>
-            </div>
+            <RecordCard key={record.id} record={record} />
           ))}
         </div>
         <LoginSuccessful />
