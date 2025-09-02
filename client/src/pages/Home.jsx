@@ -2,7 +2,6 @@ import React, { useEffect,useState } from 'react'
 
 import LoginSuccessful from '../ToasterHelpers/LoginSuccesful'
 
-import Navbar from '../components/Navbar'
 import api from '../lib/axios';
 
 const Home = () => {
@@ -22,22 +21,24 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Home</h1>
-      <LoginSuccessful />
-      <Navbar />
-      <div>
-        {trackRecord.map((record) => (
-          <div key={record.id}>
-            <h2>{record.title}</h2>
-            <p>Amount: {record.amount}</p>
-            <p>Category: {record.category}</p>
-            <p>Description: {record.description}</p>
-            <p>Date: {record.date}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+        <div className='flex fixed top-0 z-50 mb-4 w-full h-fit py-5 bg-transparent justify-center text-3xl font-bold text-white'>
+          <h1>Home</h1>
+        </div>
+        
+        <div className='mt-20 p-4 space-y-4'>
+          {trackRecord.map((record) => (
+            <div key={record.id}>
+              <h2>{record.title}</h2>
+              <p>Amount: {record.amount}</p>
+              <p>Category: {record.category}</p>
+              <p>Description: {record.description}</p>
+              <p>Date: {record.date}</p>
+            </div>
+          ))}
+        </div>
+        <LoginSuccessful />
+    </>
   )
 }
 
