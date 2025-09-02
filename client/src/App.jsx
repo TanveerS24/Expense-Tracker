@@ -7,11 +7,14 @@ import Register from './pages/Register';
 import UserDetails from "./pages/UserDetails";
 import PageNotFound from './pages/PageNotFound';
 
+import About from './components/About';
+
 const App = () => {
   const loggedin = sessionStorage.getItem('user') === null;
 
   return (
     <div>
+      <About />
       <Routes>
         <Route path='/' element={loggedin ? <Welcome /> : <Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
