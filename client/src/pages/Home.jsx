@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 
 import LoginSuccessful from '../ToasterHelpers/LoginSuccesful'
 
-import Navbar from '../helpers/Navbar'
+import Navbar from '../components/Navbar'
 import api from '../lib/axios';
 
 const Home = () => {
