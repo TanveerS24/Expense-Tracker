@@ -1,7 +1,8 @@
-import Expense from "../../models/expense.js";
+import Expense from "../../../models/expense.js";
 
 const getAllExpenses = async (req, res) => {
   try {
+    console.log("Inside getAllExpenses controller");
     const userId = req.params.userId;
     console.log("Fetching all expenses for user:", userId);
     const expenses = await Expense.find({ userId });
