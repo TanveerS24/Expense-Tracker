@@ -4,6 +4,7 @@ import { FormikContext, useFormikContext } from 'formik';
 
 const OTPInput = ({ onOTPSubmit, onVerified }) => {
   const [otp, setOtp] = useState(new Array(6).fill(''));
+  const [loading, setLoading] = useState(false);
   const inputRefs = useRef([]);
 
   const { values } = useFormikContext();
@@ -28,6 +29,7 @@ const OTPInput = ({ onOTPSubmit, onVerified }) => {
 
   const verify = async (otpValue) => {
     try {
+      setLoading(true);
       const response = await api.post(`${import.meta.env.VITE_BASE_URL}/users/verifyOTP`, { otp: otpValue, email: values.email });
       if(response.status === 200){
         console.log("OTP verified successfully");
@@ -37,6 +39,8 @@ const OTPInput = ({ onOTPSubmit, onVerified }) => {
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,6 +51,15 @@ const OTPInput = ({ onOTPSubmit, onVerified }) => {
       console.log("Submitting OTP:", otpValue);
       verify(otpValue);
     }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center mt-2">
+        <span>We're Checking</span>
+        <span className="loading loading-ring loading-xl"></span>
+      </div>
+    );
   }
 
   return (

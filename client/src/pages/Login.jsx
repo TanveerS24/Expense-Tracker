@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate, Link } from 'react-router';
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
@@ -12,6 +12,7 @@ import ClickAround from '../ToasterHelpers/ClickAround';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const validateInput = yup.object().shape({
     email: yup.string().email('Invalid email format').required('Email is required'),
@@ -25,8 +26,8 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
       const response = await api.post('/users/login', data);
-
       if(response.status === 200) {
         console.log('Login successful:', response.data);
         sessionStorage.setItem('user', response.data.user._id);
@@ -55,6 +56,8 @@ const Login = () => {
       } else {
         toast.error(`Internal Server Error`);
       }
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -102,12 +105,20 @@ const Login = () => {
                 />
                 <ErrorMessage name="password" component="div" className="text-red-400 text-sm mt-1" />
               </div>
-              <button 
-                type="submit"
-                className="btn btn-outline btn-info hover:text-slate-800 w-full cursor-target align-middle text-blue-500" 
-              >
-                Login
-              </button>
+              {loading ? 
+                <div className='flex w-full items-center justify-center'>
+                  <span>Checking Credentials...</span>
+                  <span className="loading loading-ring loading-xl"></span>
+                </div>
+                : 
+                <button 
+                  type="submit"
+                  className="btn btn-outline btn-info hover:text-slate-800 w-full cursor-target align-middle text-blue-500" 
+                >
+                  Login
+                </button>
+              }
+              
             </Form>
           </Formik>
         </div>

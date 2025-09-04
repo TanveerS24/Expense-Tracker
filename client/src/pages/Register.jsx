@@ -21,6 +21,7 @@ const Register = () => {
   const [registerStatus, setRegisterStatus] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [showVerifyEmail, setShowVerifyEmail] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const validateInput = yup.object().shape({
     username: yup.string().required('Username is required').min(4, 'Username must be at least 4 characters').max(16, 'Username must be at most 16 characters'),
@@ -30,6 +31,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
       const response = await api.post('/users/register', data)
 
       if (response.status === 201) {
@@ -57,6 +59,8 @@ const Register = () => {
       }
     } catch (error) {
       console.error('Registration failed:', error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -139,13 +143,20 @@ const Register = () => {
                   }}
                 />
               )}
-
-              <button 
-                type="submit"
-                className="btn btn-outline btn-info w-full align-middle text-blue-500 cursor-target hover:text-slate-800 disabled:bg-gray-600 disabled:text-gray-900" disabled={!registerStatus}
-              >
-                Register
-              </button>
+              {loading ? (
+                <div className="flex items-center justify-center mt-2">
+                  <span>Hold on...</span>
+                  <span className="loading loading-ring loading-xl"></span>
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="btn btn-outline btn-info w-full align-middle text-blue-500 cursor-target hover:text-slate-800 disabled:bg-gray-600 disabled:text-gray-900"
+                  disabled={!registerStatus}
+                >
+                  Register
+                </button>
+              )}
             </Form>
           </Formik>
         </div>

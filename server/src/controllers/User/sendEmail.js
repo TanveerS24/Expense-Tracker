@@ -29,7 +29,7 @@ const send_verification_email = async (req, res) => {
                 const info = await transporter.sendMail({
                     from: `"Expense Tracker" <${process.env.MAIL_USERNAME}>`, // sender address
                     to: email,                // list of receivers
-                    subject: 'Hello from Nodemailer',           // Subject line
+                    subject: 'Hello from Expense Tracker',           // Subject line
                     text: 'This is text file', // plain text body
                     html: `
                         <div style="font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; border-radius: 8px;">
