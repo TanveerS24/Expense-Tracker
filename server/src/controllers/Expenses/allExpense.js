@@ -1,4 +1,4 @@
-import Expense from "../models/expense.js";
+import Expense from "../../models/expense.js";
 
 const getAllExpenses = async (req, res) => {
   try {

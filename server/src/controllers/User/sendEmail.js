@@ -1,7 +1,7 @@
 import crypto from "crypto";
-import transporter from "../config/email.js";
-import EmailVerification from "../models/emailVerification.js";
-import User from "../models/user.js";
+import transporter from "../../config/email.js";
+import EmailVerification from "../../models/emailVerification.js";
+import User from "../../models/user.js";
 
 const random_number= () => {
     const ran_int = crypto.randomInt(100000, 1000000);

@@ -72,9 +72,9 @@ const Register = () => {
         duration={400}
       ></ClickSpark>
       </div>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-700">
-        <div className="absolute inset-0 bg-slate-700 opacity-60"></div>
-          <div className="relative z-20 w-full max-w-md p-8 rounded-2xl shadow-2xl bg-slate-800">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-transparent">
+        <div className="absolute inset-0 opacity-60"></div>
+          <div className="relative z-20 w-full max-w-md p-8 rounded-2xl shadow-2xl">
             <h1 className="text-white text-3xl font-bold text-center mb-6">Register</h1>
 
           <Formik

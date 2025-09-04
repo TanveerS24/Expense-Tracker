@@ -1,10 +1,10 @@
 import express from 'express';
 
-import allExpense from "../controllers/allExpense.js";
-import addExpense from "../controllers/addExpense.js";
-import editExpense from "../controllers/editExpense.js";
-import specificExpense from "../controllers/specificExpense.js";
-import deleteExpense from  "../controllers/deleteExpense.js";
+import allExpense from "../controllers/Expenses/allExpense.js";
+import addExpense from "../controllers/Expenses/addExpense.js";
+import editExpense from "../controllers/Expenses/editExpense.js";
+import specificExpense from "../controllers/Expenses/specificExpense.js";
+import deleteExpense from  "../controllers/Expenses/deleteExpense.js";
 
 const Router = express.Router();
 

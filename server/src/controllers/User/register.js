@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 
-import User from "../models/user.js";
+import User from "../../models/user.js";
 
 const Register = async (req, res) => {
     try {

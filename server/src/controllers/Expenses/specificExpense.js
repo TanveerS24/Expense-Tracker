@@ -1,4 +1,4 @@
-import Expense from "../models/expense.js";
+import Expense from "../../models/expense.js";
 
 const specificRecord = async (req, res) => {
     try {

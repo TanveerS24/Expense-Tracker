@@ -1,4 +1,4 @@
-import user from "../models/user.js"
+import user from "../../models/user.js"
 
 const userDetails = (async (req,res) =>{
     console.log("reached the user details end point");

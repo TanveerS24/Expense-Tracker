@@ -1,4 +1,4 @@
-import EmailVerification from "../models/emailVerification.js";
+import EmailVerification from "../../models/emailVerification.js";
 
 const verifyOTP = async (req, res) => {
     const { email, otp } = req.body;

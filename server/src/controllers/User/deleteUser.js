@@ -1,5 +1,5 @@
-import User from "../models/user.js";
-import Expense from "../models/expense.js";
+import User from "../../models/user.js";
+import Expense from "../../models/expense.js";
 
 const deleteUser = async (req, res) => {
   console.log(req.params)
