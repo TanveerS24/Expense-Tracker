@@ -9,6 +9,7 @@ import PageNotFound from './pages/PageNotFound';
 
 import About from './components/About';
 import Navbar from './components/Navbar';
+import Header from './components/Header';
 
 import LightRays from './react-bits/LightRays';
 
@@ -28,6 +29,7 @@ const Layout = () => (
     <Navbar />
     <div className="relative z-10">
       <Outlet />
+      <Header />  
     </div>
   </div>
 );
@@ -48,8 +50,8 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/newRecord" element={<AddRecord />} />
             <Route path="/userdetails" element={<UserDetails />} />
-            <Route path="*" element={<PageNotFound />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </div>
