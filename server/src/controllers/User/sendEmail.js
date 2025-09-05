@@ -20,12 +20,11 @@ const send_verification_email = async (req, res) => {
 
         try {
             const verificationCode = random_number();
+            console.log("Generated verification code:", verificationCode);
             const emailVerification = new EmailVerification({ email, verificationCode });
             await emailVerification.save();
             console.log("Email and verification code saved successfully");
-
             try {
-                const otp = random_number();
                 const info = await transporter.sendMail({
                     from: `"Expense Tracker" <${process.env.MAIL_USERNAME}>`, // sender address
                     to: email,                // list of receivers
@@ -35,7 +34,7 @@ const send_verification_email = async (req, res) => {
                         <div style="font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; border-radius: 8px;">
                             <h2 style="color: #333;">Hey there 👋</h2>
                             <p style="font-size: 16px; color: #555;">
-                            Here’s your OTP: <strong style="font-size:18px; color:#2c3e50;">${otp}</strong>
+                            Here’s your OTP: <strong style="font-size:18px; color:#2c3e50;">${verificationCode}</strong>
                             </p>
                             <p style="font-size: 14px; color: #777;">Use this OTP to verify your email.  
                             It’s valid only for a short time, so don’t keep it waiting 🙂.
