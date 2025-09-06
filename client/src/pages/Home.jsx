@@ -15,6 +15,7 @@ const Home = () => {
       navigate('/login');
       return;
     }
+    
     const fetchData = async () => {
       try {
         const date = new Date();
@@ -35,7 +36,7 @@ const Home = () => {
 
   return (
     <>  
-        <div className='mt-20 p-4 space-y-4'>
+        <div className='mt-20 p-4 space-y-4 grid grid-cols-3 gap-4 items-stretch'>
           {trackRecord.map((record) => (
             <RecordCard key={record.id} record={record} />
           ))}

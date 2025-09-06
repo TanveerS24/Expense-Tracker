@@ -6,6 +6,7 @@ import AddRecord from './pages/AddRecord';
 import Register from './pages/Register'; 
 import UserDetails from "./pages/UserDetails";
 import PageNotFound from './pages/PageNotFound';
+import AboutMe from './pages/AboutMe';
 
 import About from './components/About';
 import Navbar from './components/Navbar';
@@ -51,6 +52,7 @@ const App = () => {
             <Route path="/newRecord" element={<AddRecord />} />
             <Route path="/userdetails" element={<UserDetails />} />
           </Route>
+          <Route path="/aboutme" element={<AboutMe />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
