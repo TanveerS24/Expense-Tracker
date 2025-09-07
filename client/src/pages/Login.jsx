@@ -74,7 +74,7 @@ const Login = () => {
       ></ClickSpark>
       </div>
       <div className='flex flex-col items-center justify-center min-h-screen bg-transparent'>
-        <div className='absoluteinset-0 opacity-60'></div>
+        <div className='absolute inset-0 opacity-60'></div>
         <div className='relative z-10 w-full max-w-md p-8 rounded-2xl shadow-2xl'>
           <h1 className="text-white text-3xl font-bold text-center mb-6">Login</h1>
           <Formik
