@@ -12,6 +12,8 @@ const AddRecord = () => {
   };
 
   const onSubmit = (values) => {
+    values.userId = sessionStorage.getItem('userId');
+    values.date = new Date();
     console.log(values);
   }
 
@@ -34,6 +36,30 @@ const AddRecord = () => {
                 <label htmlFor="amount">Amount</label>
                 <Field id="amount" name="amount" placeholder="Enter amount" />
               </div>
+              <div>
+                <label>Transaction Type</label>
+                <div role="group" aria-labelledby="transaction-type-group" onClick={(e) => changeTransactionType(e.target.value)}>
+                  <label>
+                    <Field type="radio" name="transactionType" value="income" />
+                    Credit
+                  </label>
+                  <label>
+                    <Field type="radio" name="transactionType" value="expense" />
+                    Debit
+                    </label>
+                  </div>
+                </div>
+              {values.transactionType === 'Debit' && (
+                <div>
+                  <label htmlFor="category">Category</label>
+                  <Field as="select" id="category" name="category">
+                    <option value="">Select category</option>
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Entertainment">Entertainment</option>
+                  </Field>
+                </div>
+              )}
               <button type="submit" className='cursor-target'>Add Record</button>
             </Form>
           </Formik>

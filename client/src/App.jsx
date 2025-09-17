@@ -28,7 +28,7 @@ const WelcomeLayout = () => (
 const Layout = () => (
   <div className="relative min-h-screen">
     <Navbar />
-    <div className="relative z-10">
+    <div className="relative z-10 pt-8">
       <Outlet />
       <Header />  
     </div>
